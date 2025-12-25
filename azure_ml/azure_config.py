@@ -10,10 +10,12 @@ from azure.identity import DefaultAzureCredential
 # ============================================================================
 # UPDATE THESE WITH YOUR AZURE DETAILS
 # ============================================================================
-SUBSCRIPTION_ID = "YOUR-SUBSCRIPTION-ID"  # From Azure Portal
-RESOURCE_GROUP = "cpu-forecast-rg"        # Your resource group name
-WORKSPACE_NAME = "cpu-forecast-ws"        # Your workspace name
-LOCATION = "eastus"                       # Azure region
+SUBSCRIPTION_ID = '3c903801-0878-49d9-9d2c-3ed7f0e0ad1c'  # From Azure Portal
+RESOURCE_GROUP = 'RG_JIT02'        # Your resource group name
+WORKSPACE_NAME = 'cpu-project'        # Your workspace name
+LOCATION = "northeurope"                       # Azure region
+
+
 
 # Compute resources
 COMPUTE_NAME = "cpu-forecast-cluster"

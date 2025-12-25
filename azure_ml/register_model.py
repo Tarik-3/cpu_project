@@ -7,17 +7,22 @@ from azure.ai.ml.constants import AssetTypes
 from azure_config import get_ml_client, MODEL_NAME, MODEL_VERSION
 
 
-def register_model():
+def register_model(model_path="xgboost_cpu_forecaster.pkl"):
     """
     Register the trained XGBoost model to Azure ML
+    
+    Args:
+        model_path: Path to model file. On compute instance, use local path.
+                   Example: "xgboost_cpu_forecaster.pkl" or "./models/model.pkl"
     """
     client = get_ml_client()
     
     print(f"Registering model: {MODEL_NAME} (version {MODEL_VERSION})")
+    print(f"Model path: {model_path}")
     
     # Register model
     model = Model(
-        path="../xgboost_cpu_forecaster.pkl",  # Path to your saved model
+        path=model_path,  # Path to your saved model on compute instance
         name=MODEL_NAME,
         version=MODEL_VERSION,
         type=AssetTypes.CUSTOM_MODEL,
@@ -43,4 +48,12 @@ def register_model():
 
 
 if __name__ == "__main__":
-    register_model()
+    import sys
+    
+    # Allow model path as command line argument
+    model_path = sys.argv[1] if len(sys.argv) > 1 else "xgboost_cpu_forecaster.pkl"
+    
+    print(f"\nℹ️  Using model file: {model_path}")
+    register_model(model_path)
+    print("\n✅ Model registration completed!")
+
