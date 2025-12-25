@@ -1,14 +1,18 @@
 import requests
 import pandas as pd
+import os
+
+# Get the root directory of the deploy folder
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # ===============================================
 # CONFIGURATION VARIABLES
 # ===============================================
-DATA_FILE = "data.csv"
-SERVER_URL = " https://387832a99e49.ngrok-free.app/forecast"
+DATA_FILE = os.path.join(ROOT_DIR, "data", "data.csv")  # Local data file to send
+SERVER_URL = "https://5e3ad4cf79c9.ngrok-free.app/forecast"
 TARGET_SERVER_ID = 638939
 TARGET_SERVICE = "CPU_Usage"  # Options: "CPU_Usage", "Windows_CPU_Usage", "CPU_Usage_SQL"
-OUTPUT_FILE = "forecast_results.csv"
+OUTPUT_FILE = os.path.join(ROOT_DIR, "data", "forecast_results.csv")
 
 # ===============================================
 # LOAD RAW DATA
